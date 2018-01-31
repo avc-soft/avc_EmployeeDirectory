@@ -18,6 +18,7 @@ class AddEmployeeFieldsToUsersTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
             $table->integer('position_id')->unsigned()->default(0);
+            $table->integer('boss_id')->unsigned()->default(0);
             $table->dateTime('hired_at')->nullable();
             $table->integer('salary')->default(0);
 
@@ -38,6 +39,7 @@ class AddEmployeeFieldsToUsersTable extends Migration
                 'middle_name',
                 'last_name',
                 'position_id',
+                'boss_id',
                 'hired_at',
                 'salary'
             ]);
