@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class AddEmployeeFieldsToUsersTable extends Migration
@@ -14,15 +13,13 @@ class AddEmployeeFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('first_name')->nullable();
-            $table->string('middle_name')->nullable();
-            $table->string('last_name')->nullable();
             $table->integer('position_id')->unsigned()->default(0);
             $table->integer('boss_id')->unsigned()->default(0);
             $table->dateTime('hired_at')->nullable();
             $table->integer('salary')->default(0);
 
             $table->foreign('position_id')->references('id')->on('positions');
+            $table->index('boss_id');
         });
     }
 
@@ -34,10 +31,10 @@ class AddEmployeeFieldsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function ($table) {
+            $table->dropIndex(['boss_id']);
+            $table->dropForeign(['position_id']);
+
             $table->dropColumn([
-                'first_name',
-                'middle_name',
-                'last_name',
                 'position_id',
                 'boss_id',
                 'hired_at',

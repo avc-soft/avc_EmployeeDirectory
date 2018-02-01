@@ -11,6 +11,46 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // TODO: проверить работает ли так быстрее
+        DB::disableQueryLog();
+
+        // TODO: Исправить 55к инсертов на один и переделать забор во что-то менее постыдное
+        factory(App\User::class)
+            ->create(['position_id' => 1])
+            ->each(function ($boss) {$this->createSeed($boss, 2, 5)
+                ->each(function ($boss) {$this->createSeed($boss, 3,10)
+                    ->each(function ($boss) {$this->createSeed($boss, 4, 10)
+                        ->each(function ($boss) {$this->createSeed($boss, 5, 10)
+                            ->each(function ($boss) {$this->createSeed($boss, 6, 10);
+                        });
+                    });
+                });
+            });
+        });
     }
+
+    /**
+     * @param \App\User $boss
+     * @param int $position_id
+     * @param int $times
+     *
+     * @return \App\User
+     */
+    private function createSeed(App\User $boss, int $position_id, int $times)
+    {
+        return factory(App\User::class, $times)
+            ->create([
+                'boss_id' => $boss->id,
+                'position_id' => $position_id
+            ]);
+    }
+
+    /*private function prepareData()
+    {
+        return array_merge(
+            factory(App\User::class)
+                ->make(['position_id' => 1])
+                ->asArray(),
+        );
+    }*/
 }
