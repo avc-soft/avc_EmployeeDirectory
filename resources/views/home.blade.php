@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                        <div id="employees-grid">
+                            <form id="search" class="form-inline">
+                                <input placeholder="Search" name="query" v-model="searchQuery" class="form-control">
+                            </form>
+                            <grid :data="gridData"
+                                  :columns="gridColumns"
+                                  :filter-key="searchQuery">
+                            </grid>
+                        </div>
                 </div>
             </div>
         </div>

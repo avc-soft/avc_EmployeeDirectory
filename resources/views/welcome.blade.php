@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <ul class="media-list">
+                {{--<ul class="media-list">
                     <li class="media">
                         <div class="media-left">
                             <a href="#">
@@ -40,8 +40,15 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul>--}}
+
+                {{--<v-tree ref='tree' :data='treeData' :multiple='true' :tpl='tpl' :halfcheck='true'/>
+                <input type="text" v-model="searchword" />
+                <button type="button" @click="search">GO</button>--}}
+
+
             </div>
         </div>
     </div>
+
 @endsection
