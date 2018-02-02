@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Position
+ * App\Employee
  */
-class Position extends Model
+class Employee extends Model
 {
     //
 }

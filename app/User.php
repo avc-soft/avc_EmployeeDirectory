@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * @property mixed id
+ * App\User
  */
 class User extends Authenticatable
 {

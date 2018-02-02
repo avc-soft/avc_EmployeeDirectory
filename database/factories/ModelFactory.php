@@ -12,13 +12,6 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Position::class, function (Faker\Generator $faker) {
-    return [
-        'name'   => $faker->name,
-        'weight' => $faker->numberBetween(0,99)
-    ];
-});
-
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -27,6 +20,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email'             => $faker->unique()->safeEmail,
         'password'          => $password ?: $password = bcrypt('secret'),
         'remember_token'    => str_random(10),
+    ];
+});
+
+$factory->define(App\Position::class, function (Faker\Generator $faker) {
+    return [
+        'name'   => $faker->name,
+        'weight' => $faker->numberBetween(0,99)
+    ];
+});
+
+$factory->define(App\Employee::class, function (Faker\Generator $faker) {
+    return [
+        'name'              => $faker->name,
         'position_id'       => $faker->numberBetween(1,6),
         'boss_id'           => 0,
         'hired_at'          => $faker->dateTime(),
