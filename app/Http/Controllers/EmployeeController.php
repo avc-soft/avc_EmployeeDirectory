@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Employee;
 
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +23,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return $this->getEmployees();
+    }
+
+    protected function getEmployees()
+    {
+        return Employee::with('position')->paginate(10);
     }
 }

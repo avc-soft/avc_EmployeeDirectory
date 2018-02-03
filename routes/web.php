@@ -13,10 +13,14 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('employees.tree');
+});
 
-Route::get('/employees', 'UserController@index')->name('employees');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/grid', function () {
+        return view('employees.grid');
+    })->name('grid');
+});
 
-/*Route::group(['middleware' => 'auth'], function(){
-
-});*/
+Route::get('/employees', 'EmployeeController@index');

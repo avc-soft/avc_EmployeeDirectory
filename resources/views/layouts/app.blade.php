@@ -42,8 +42,8 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        <li><a href="{{ route('home') }}">Employees Tree</a></li>
-                        <li><a href="{{ route('employees') }}">Employees Grid</a></li>
+                        <li><a href="{{ url('/') }}">Employees Tree</a></li>
+                        <li><a href="{{ route('grid') }}">Employees Grid</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>

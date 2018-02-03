@@ -20,7 +20,7 @@ class RoutingTest extends TestCase
     function guest_cannot_see_restricted_area()
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
-        $this->get('/employees');
+        $this->get('/grid');
     }
 
 }
