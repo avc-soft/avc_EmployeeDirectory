@@ -1,78 +1,63 @@
 <template>
-    <table>
-        <thead>
-        <tr>
-            <th v-for="key in columns"
-                @click="sortBy(key)"
-                :class="{ active: sortKey == key }">
-                {{ key | capitalize }}
-                <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'"></span>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="entry in filteredData">
-            <td v-for="key in columns">
-                {{entry[key]}}
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="grid">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Hired At</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="employee in employees" :key="employee.id">
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.position.name }}</td>
+                <td>{{ employee.salary }}</td>
+                <td>{{ employee.hired_at }}</td>
+                <td>
+                    <button class="btn btn-xs btn-primary">Edit</button>
+                    <button class="btn btn-xs btn-danger">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+    </div>
 </template>
 
 <script>
     export default {
-        props: {
-            data: Array,
-            columns: Array,
-            filterKey: String
-        },
-        data: function () {
-            var sortOrders = {}
-            this.columns.forEach(function (key) {
-                sortOrders[key] = 1
-            })
+        data() {
             return {
-                sortKey: '',
-                sortOrders: sortOrders
-            }
+                dataSet: false,
+                employees: []
+            };
         },
-        computed: {
-            filteredData: function () {
-                var sortKey = this.sortKey
-                var filterKey = this.filterKey && this.filterKey.toLowerCase()
-                var order = this.sortOrders[sortKey] || 1
-                var data = this.data
-                if (filterKey) {
-                    data = data.filter(function (row) {
-                        return Object.keys(row).some(function (key) {
-                            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-                        })
-                    })
-                }
-                if (sortKey) {
-                    data = data.slice().sort(function (a, b) {
-                        a = a[sortKey]
-                        b = b[sortKey]
-                        return (a === b ? 0 : a > b ? 1 : -1) * order
-                    })
-                }
-                return data
-            }
-        },
-        filters: {
-            capitalize: function (str) {
-                return str.charAt(0).toUpperCase() + str.slice(1)
-            }
+        created() {
+            this.fetch();
         },
         methods: {
-            sortBy: function (key) {
-                this.sortKey = key
-                this.sortOrders[key] = this.sortOrders[key] * -1
+            fetch(page) {
+                axios.get(this.url(page)).then(this.refresh);
+            },
+            url(page) {
+                if (!page) {
+                    let query = location.search.match(/page=(\d+)/);
+                    page = query ? query[1] : 1;
+                }
+                return `/employees?page=${page}`;
+            },
+            refresh({data}) {
+                this.dataSet = data;
+                this.employees = data.data;
             }
         }
     }
 </script>
+<!--
 <style>
     table {
         border: 2px solid #42b983;
@@ -127,4 +112,4 @@
         border-right: 4px solid transparent;
         border-top: 4px solid #fff;
     }
-</style>
+</style>-->

@@ -17,7 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('gridview', require('./components/Grid.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
-
+Vue.component('tree', require('./components/Tree.vue'));
 
 var app = new Vue({
     el: '#app'

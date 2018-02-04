@@ -6,28 +6,39 @@ use App\Employee;
 
 class EmployeeController extends Controller
 {
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * EmployeeController constructor.
      */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function index()
     {
-        return $this->getEmployees();
+        return Employee::paginate(10);
     }
 
-    protected function getEmployees()
+    /**
+     * @return mixed
+     */
+    public function treeRoot()
     {
-        return Employee::with('position')->paginate(10);
+        return Employee::whereBossId(0)->first();
+    }
+
+    /**
+     * @param Employee $employee
+     *
+     * @return mixed
+     */
+    public function treeChildren(Employee $employee)
+    {
+        return $employee->children()->get();
     }
 }
