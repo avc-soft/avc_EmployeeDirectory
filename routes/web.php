@@ -26,3 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/employees', 'EmployeeController@index');
 Route::get('/employees/root', 'EmployeeController@treeRoot');
 Route::get('/employee/{employee}/children', 'EmployeeController@treeChildren');
+
+Route::get('/employees/sort/{field}', 'EmployeeController@sort');
+Route::get('/employees/search/{value}', 'EmployeeController@search');

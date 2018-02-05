@@ -33,6 +33,19 @@ class Employee extends Model
         return $query->where('boss_id', $this->id);
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $searchQuery
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function search($searchQuery)
+    {
+        return self::where('name', 'like', '%' . $searchQuery . '%')
+            ->orWhere('salary', 'like', '%' . $searchQuery . '%')
+            ->orWhere('hired_at', 'like', '%' . $searchQuery . '%');
+    }
+
     /*public function withPages()
     {
         return self::paginate(10);

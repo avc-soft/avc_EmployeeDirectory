@@ -1,12 +1,18 @@
 <template>
     <div class="grid">
+
+        <div class="input-group">
+            <span class="input-group-addon" id="search-addon">Search for</span>
+            <input v-model="searchQuery" type="text" class="form-control" placeholder="something..." aria-describedby="search-addon">
+        </div>
+
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Salary</th>
-                <th>Hired At</th>
+                <th @click="sortBy('name')">Name</th>
+                <th @click="sortBy('position_id')">Position</th>
+                <th @click="sortBy('salary')">Salary</th>
+                <th @click="sortBy('hired_at')">Hired At</th>
                 <th></th>
             </tr>
             </thead>
@@ -33,11 +39,18 @@
         data() {
             return {
                 dataSet: false,
-                employees: []
+                employees: [],
+                sort: '',
+                searchQuery: ''
             };
         },
         created() {
             this.fetch();
+        },
+        watch: {
+            searchQuery() {
+                this.fetch();
+            }
         },
         methods: {
             fetch(page) {
@@ -48,18 +61,25 @@
                     let query = location.search.match(/page=(\d+)/);
                     page = query ? query[1] : 1;
                 }
-                return `/employees?page=${page}`;
+                return `/employees${this.getParams(page)}`;
             },
             refresh({data}) {
                 this.dataSet = data;
                 this.employees = data.data;
+            },
+            getParams(page = 0){
+                return `?page=${page}&sortBy=${this.sort}&searchQuery=${this.searchQuery}`;
+            },
+            sortBy(field) {
+                this.sort = (this.sort.indexOf('-') !== 0? '-' : '') + field;
+                this.fetch();
             }
         }
     }
 </script>
-<!--
+
 <style>
-    table {
+    /*table {
         border: 2px solid #42b983;
         border-radius: 3px;
         background-color: #fff;
@@ -86,7 +106,7 @@
 
     th.active {
         color: #fff;
-    }
+    }*/
 
     th.active .arrow {
         opacity: 1;
@@ -112,4 +132,4 @@
         border-right: 4px solid transparent;
         border-top: 4px solid #fff;
     }
-</style>-->
+</style>

@@ -12,16 +12,15 @@ class EmployeeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['treeRoot', 'treeChildren']);
     }
-
 
     /**
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function index()
     {
-        return Employee::paginate(10);
+        return $this->getEmployees()->paginate(10);
     }
 
     /**
@@ -40,5 +39,26 @@ class EmployeeController extends Controller
     public function treeChildren(Employee $employee)
     {
         return $employee->children()->get();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder|static
+     */
+    protected function getEmployees()
+    {
+        $searchQuery = request()->has('searchQuery') ? request('searchQuery') : '';
+        $employees = Employee::search($searchQuery);
+
+        if ($field = request('sortBy')) {
+            if (strpos($field, '-') === 0) {
+                $direction = 'desc';
+                $field = substr($field, 1);
+            } else {
+                $direction = 'asc';
+            }
+            $employees->orderBy($field, $direction);
+        }
+
+        return $employees;
     }
 }
