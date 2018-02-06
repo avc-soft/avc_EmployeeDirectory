@@ -1,9 +1,11 @@
 <template>
     <div class="grid">
 
-        <div class="input-group">
+        <a href="/employees/create" class="btn btn-success pull-left">Add new</a>
+
+        <div class="input-group search-field pull-right">
             <span class="input-group-addon" id="search-addon">Search for</span>
-            <input v-model="searchQuery" type="text" class="form-control" placeholder="something..." aria-describedby="search-addon">
+            <input v-model="searchQuery" @input="send" type="text" class="form-control" placeholder="something..." aria-describedby="search-addon">
         </div>
 
         <table class="table table-hover">
@@ -23,8 +25,8 @@
                 <td>{{ employee.salary }}</td>
                 <td>{{ employee.hired_at }}</td>
                 <td>
-                    <button class="btn btn-xs btn-primary">Edit</button>
-                    <button class="btn btn-xs btn-danger">Delete</button>
+                    <a :href="'/employees/'+employee.id+'/edit'" class="btn btn-xs btn-primary">Edit</a>
+                    <a href="#" @click="deleteEntry(employee.id)" class="btn btn-xs btn-danger">Delete</a>
                 </td>
             </tr>
             </tbody>
@@ -63,73 +65,27 @@
                 }
                 return `/employees${this.getParams(page)}`;
             },
+            getParams(page = 0){
+                return `?page=${page}&sortBy=${this.sort}&searchQuery=${this.searchQuery}`;
+            },
             refresh({data}) {
                 this.dataSet = data;
                 this.employees = data.data;
             },
-            getParams(page = 0){
-                return `?page=${page}&sortBy=${this.sort}&searchQuery=${this.searchQuery}`;
-            },
             sortBy(field) {
                 this.sort = (this.sort.indexOf('-') !== 0? '-' : '') + field;
                 this.fetch();
+            },
+            deleteEntry(id) {
+                if (confirm("Do you really want to delete it?")) {
+                    axios.delete(`/employees/${id}`).then(this.fetch);
+                }
             }
         }
     }
 </script>
-
 <style>
-    /*table {
-        border: 2px solid #42b983;
-        border-radius: 3px;
-        background-color: #fff;
-    }
-
-    th {
-        background-color: #42b983;
-        color: rgba(255,255,255,0.66);
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    td {
-        background-color: #f9f9f9;
-    }
-
-    th, td {
-        min-width: 120px;
-        padding: 10px 20px;
-    }
-
-    th.active {
-        color: #fff;
-    }*/
-
-    th.active .arrow {
-        opacity: 1;
-    }
-
-    .arrow {
-        display: inline-block;
-        vertical-align: middle;
-        width: 0;
-        height: 0;
-        margin-left: 5px;
-        opacity: 0.66;
-    }
-
-    .arrow.asc {
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-bottom: 4px solid #fff;
-    }
-
-    .arrow.dsc {
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-top: 4px solid #fff;
+    .search-field {
+        max-width: 500px;
     }
 </style>

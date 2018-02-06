@@ -18,7 +18,8 @@ window.Vue = require('vue');
 Vue.component('gridview', require('./components/Grid.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('tree', require('./components/Tree.vue'));
-
+Vue.component('select-autocomplete', require('./components/SelectAutocomplete.vue'));
+require('vue2-autocomplete-js/dist/style/vue2-autocomplete.css');
 var app = new Vue({
     el: '#app'
 });

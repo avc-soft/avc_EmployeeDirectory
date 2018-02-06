@@ -20,7 +20,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return $this->getEmployees()->paginate(10);
+        $employees = $this->getEmployees();
+
+        return $this->withPagination() ? $employees->paginate(10) : $employees->get();
     }
 
     public function create()
@@ -73,5 +75,15 @@ class EmployeeController extends Controller
         }
 
         return $employees;
+    }
+
+    /**
+     * Indicates if pagination is needed or we want just all at once
+     *
+     * @return bool
+     */
+    protected function withPagination()
+    {
+        return !request()->has('getAll');
     }
 }

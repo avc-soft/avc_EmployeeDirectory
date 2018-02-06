@@ -10,9 +10,9 @@
                     </div>
 
                     <div class="panel-body">
-
-                        @include('employees.crud._form')
-
+                        <form class="form-horizontal" method="POST" action="{{ url("/employees/$employee->id") }}">
+                            @include('employees.crud._form')
+                        </form>
                     </div>
                 </div>
             </div>
