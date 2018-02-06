@@ -16,9 +16,10 @@
         },
         methods: {
             fetch() {
-                axios.get('/employees/root').then(this.refresh);
+                axios.get('/tree/root').then(this.refresh);
             },
             refresh(response) {
+                console.log(response);
                 this.employee = response.data;
             }
         },

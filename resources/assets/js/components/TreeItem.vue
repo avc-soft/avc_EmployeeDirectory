@@ -50,7 +50,7 @@
         },
         methods: {
             fetch(id) {
-                axios.get(`/employee/${id}/children`).then(this.refresh);
+                axios.get(`/tree/${id}/children`).then(this.refresh);
             },
             refresh(response) {
                 this.children = response.data;

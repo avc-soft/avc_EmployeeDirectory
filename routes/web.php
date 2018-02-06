@@ -23,9 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('grid');
 });
 
-Route::get('/employees', 'EmployeeController@index');
-Route::get('/employees/root', 'EmployeeController@treeRoot');
-Route::get('/employee/{employee}/children', 'EmployeeController@treeChildren');
+Route::resource('employees', 'EmployeeController');
 
-Route::get('/employees/sort/{field}', 'EmployeeController@sort');
-Route::get('/employees/search/{value}', 'EmployeeController@search');
+Route::get('/tree/root', 'TreeController@treeRoot');
+Route::get('/tree/{employee}/children', 'TreeController@treeChildren');
+

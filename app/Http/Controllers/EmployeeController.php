@@ -12,7 +12,7 @@ class EmployeeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['treeRoot', 'treeChildren']);
+        $this->middleware('auth');
     }
 
     /**
@@ -23,22 +23,34 @@ class EmployeeController extends Controller
         return $this->getEmployees()->paginate(10);
     }
 
-    /**
-     * @return mixed
-     */
-    public function treeRoot()
+    public function create()
     {
-        return Employee::whereBossId(0)->first();
+        return view('employees.crud.create');
     }
 
-    /**
-     * @param Employee $employee
-     *
-     * @return mixed
-     */
-    public function treeChildren(Employee $employee)
+    public function store()
     {
-        return $employee->children()->get();
+
+    }
+
+    public function show(Employee $employee)
+    {
+
+    }
+
+    public function edit(Employee $employee)
+    {
+        return view('employees.crud.edit', compact('employee'));
+    }
+
+    public function update(Employee $employee)
+    {
+
+    }
+
+    public function destroy(Employee $employee)
+    {
+        return $employee->delete();
     }
 
     /**
@@ -46,8 +58,9 @@ class EmployeeController extends Controller
      */
     protected function getEmployees()
     {
-        $searchQuery = request()->has('searchQuery') ? request('searchQuery') : '';
-        $employees = Employee::search($searchQuery);
+        $employees = Employee::search(
+            request()->has('searchQuery') ? request('searchQuery') : ''
+        );
 
         if ($field = request('sortBy')) {
             if (strpos($field, '-') === 0) {

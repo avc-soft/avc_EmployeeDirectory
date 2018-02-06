@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-02-05.
+    * Generated on 2018-02-06.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -49,6 +49,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -180,6 +182,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -311,6 +315,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -442,6 +448,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -573,6 +581,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -704,6 +714,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -835,6 +847,8 @@ namespace PHPSTORM_META {
         'generate.publish-templates' => \Way\Generators\Commands\PublishTemplatesCommand::class,
         'migration.generate' => \Xethron\MigrationsGenerator\MigrateGenerateCommand::class,
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
