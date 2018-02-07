@@ -12,6 +12,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .alert {
+            position: fixed;
+            right: 20px;
+            top: 75px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -72,8 +79,8 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
+        @include('flash::message')
     </div>
 
     <!-- Scripts -->

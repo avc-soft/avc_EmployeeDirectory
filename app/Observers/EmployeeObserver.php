@@ -19,4 +19,20 @@ class EmployeeObserver
             $item->save();
         });
     }
+
+    /**
+     * Employee deleted event
+     */
+    public function deleted()
+    {
+        flash('Employee deleted')->success();
+    }
+
+    /**
+     * Employee saved event
+     */
+    public function saved()
+    {
+        flash('Employee information saved')->success();
+    }
 }

@@ -19,6 +19,7 @@ class CreateEmployeesTable extends Migration {
 			$table->integer('position_id')->unsigned()->nullable()->index('employees_position_foreign_idx');
 			$table->integer('boss_id')->unsigned()->nullable();
 			$table->integer('salary')->unsigned()->nullable();
+            $table->string('avatar')->nullable();
 			$table->timestamps();
 			$table->timestamp('hired_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
 		});

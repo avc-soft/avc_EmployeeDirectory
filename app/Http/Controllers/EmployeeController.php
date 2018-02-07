@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Http\Requests\SaveEmployee;
 
 class EmployeeController extends Controller
 {
@@ -22,7 +23,7 @@ class EmployeeController extends Controller
     {
         $employees = $this->getEmployees();
 
-        return $this->withPagination() ? $employees->paginate(10) : $employees->get();
+        return $this->withoutPagination() ? $employees->get() : $employees->paginate(10);
     }
 
     public function create()
@@ -30,14 +31,16 @@ class EmployeeController extends Controller
         return view('employees.crud.create');
     }
 
-    public function store()
+    public function store(SaveEmployee $request)
     {
+        $employee = Employee::create($request->all());
 
+        return redirect()->action('EmployeeController@show', $employee);
     }
 
     public function show(Employee $employee)
     {
-
+        return view('employees.crud.show', compact('employee'));
     }
 
     public function edit(Employee $employee)
@@ -45,14 +48,16 @@ class EmployeeController extends Controller
         return view('employees.crud.edit', compact('employee'));
     }
 
-    public function update(Employee $employee)
+    public function update(SaveEmployee $request, Employee $employee)
     {
+        $employee->update($request->all());
 
+        return redirect()->action('EmployeeController@show', $employee);
     }
 
     public function destroy(Employee $employee)
     {
-        return $employee->delete();
+        $employee->delete();
     }
 
     /**
@@ -82,8 +87,8 @@ class EmployeeController extends Controller
      *
      * @return bool
      */
-    protected function withPagination()
+    protected function withoutPagination()
     {
-        return !request()->has('getAll');
+        return request()->has('getAll');
     }
 }

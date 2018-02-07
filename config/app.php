@@ -193,6 +193,11 @@ return [
          */
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        /*
+         * Flash messages
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
+
     ],
 
     /*

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Employee extends Model
 {
-    protected $fillable = ['name', 'position_id', 'salary', 'hired_at'];
+    protected $fillable = ['name', 'position_id', 'salary', 'boss_id', 'avatar', 'hired_at'];
 
     protected $with = ['position'];
 
@@ -23,6 +23,20 @@ class Employee extends Model
     {
         return $this->belongsTo(Position::class);
     }
+
+    public function getBossAttribute()
+    {
+        return self::find($this->boss_id);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatarAttribute()
+    {
+        return $this->avatar ?: '/storage/artist-icon.png';
+    }
+
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
      *

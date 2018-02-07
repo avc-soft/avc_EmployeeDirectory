@@ -11,7 +11,9 @@
 
                     <div class="panel-body">
 
-                        @include('employees.crud._form')
+                        <form class="form-horizontal" method="POST" action="{{ url("/employees") }}">
+                            @include('employees.crud._form')
+                        </form>
 
                     </div>
                 </div>

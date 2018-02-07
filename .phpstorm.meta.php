@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-02-06.
+    * Generated on 2018-02-07.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -51,6 +51,8 @@ namespace PHPSTORM_META {
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -184,6 +186,8 @@ namespace PHPSTORM_META {
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -317,6 +321,8 @@ namespace PHPSTORM_META {
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -450,6 +456,8 @@ namespace PHPSTORM_META {
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -583,6 +591,8 @@ namespace PHPSTORM_META {
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -716,6 +726,8 @@ namespace PHPSTORM_META {
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,
@@ -849,6 +861,8 @@ namespace PHPSTORM_META {
         'Illuminate\Database\Migrations\MigrationRepositoryInterface' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
         'cache.store' => \Illuminate\Cache\Repository::class,

@@ -4,7 +4,7 @@
     <label for="name" class="col-md-4 control-label">Name</label>
 
     <div class="col-md-6">
-        <input id="name" type="text" class="form-control" name="name" value="{{ $employee->name }}" required autofocus>
+        <input id="name" type="text" class="form-control" name="name" value="{{ isset($employee)? $employee->name : ''}}" required autofocus>
 
         @if ($errors->has('name'))
             <span class="help-block">
@@ -20,7 +20,7 @@
     <div class="col-md-6">
         <select id="position_id" class="form-control" name="position_id">
             @foreach($positions as $position)
-                <option value="{{ $position->id }}"{{ $employee->position_id === $position->id? ' selected' : '' }}>
+                <option value="{{ $position->id }}"{{ isset($employee) && $employee->position_id === $position->id? ' selected' : '' }}>
                     {{ $position->name }}
                 </option>
             @endforeach
@@ -37,7 +37,7 @@
     <label for="salary" class="col-md-4 control-label">Salary</label>
 
     <div class="col-md-6">
-        <input id="salary" type="text" class="form-control" name="salary" value="{{ $employee->salary }}" required>
+        <input id="salary" type="text" class="form-control" name="salary" value="{{ isset($employee)? $employee->salary : 0 }}" required>
 
         @if ($errors->has('salary'))
             <span class="help-block">
@@ -51,8 +51,9 @@
     <label for="boss_id" class="col-md-4 control-label">Boss</label>
 
     <div class="col-md-6">
-        <select-autocomplete></select-autocomplete>
-        @if ($errors->has('salary'))
+        <input type="hidden" name="boss_id" id="boss_id" value="{{ isset($employee)? $employee->boss_id : 0 }}" />
+        <select-autocomplete value="{{ isset($employee) && $employee->boss_id ? $employee->boss->name : '' }}"></select-autocomplete>
+        @if ($errors->has('boss_id'))
             <span class="help-block">
                 <strong>{{ $errors->first('boss_id') }}</strong>
             </span>
@@ -62,8 +63,8 @@
 
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        <button type="submit" class="btn btn-primary">
-            Update
+        <button type="submit" class="btn btn-{{ isset($employee)? 'primary' : 'success' }}">
+            {{ isset($employee)? 'Update' : 'Create' }}
         </button>
     </div>
 </div>
