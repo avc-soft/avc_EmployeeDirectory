@@ -1,10 +1,17 @@
 {{ csrf_field() }}
 
+@if(isset($employee))
+<div class="form-group">
+    <div class="col-md-8 col-md-offset-4">
+        <img src="{{ $employee->avatar }}" alt="avatar" class="img-thumbnail">
+    </div>
+</div>
+@endif
+
 <div class="form-group">
     <label for="photo" class="col-md-4 control-label">Photo</label>
     <div class="col-md-6">
         <input type="file" name="photo" id="photo">
-        <p class="help-block">Upload the image.</p>
     </div>
 </div>
 

@@ -43690,7 +43690,15 @@ var render = function() {
           _vm._l(_vm.employees, function(employee) {
             return _c("tr", { key: employee.id }, [
               _c("td", [
-                _c("img", { attrs: { src: employee.thumb, alt: "" } })
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/storage/" +
+                      (employee.photo ? employee.photo : "artist-icon.png"),
+                    alt: "",
+                    width: "100"
+                  }
+                })
               ]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(employee.name))]),
@@ -43705,7 +43713,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "btn btn-xs btn-default",
+                    staticClass: "btn btn-default",
                     attrs: { href: "/employees/" + employee.id }
                   },
                   [_vm._v("Profile")]
@@ -43714,7 +43722,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "btn btn-xs btn-primary",
+                    staticClass: "btn btn-primary",
                     attrs: { href: "/employees/" + employee.id + "/edit" }
                   },
                   [_vm._v("Edit")]
@@ -43723,7 +43731,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "btn btn-xs btn-danger",
+                    staticClass: "btn btn-danger",
                     attrs: { href: "#" },
                     on: {
                       click: function($event) {

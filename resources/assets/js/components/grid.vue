@@ -11,6 +11,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
+                <th></th>
                 <th @click="sortBy('name')">Name</th>
                 <th @click="sortBy('position_id')">Position</th>
                 <th @click="sortBy('salary')">Salary</th>
@@ -20,13 +21,15 @@
             </thead>
             <tbody>
             <tr v-for="employee in employees" :key="employee.id">
+                <td><img :src="'/storage/' + (employee.photo?employee.photo:'artist-icon.png')" alt="" width="100" /></td>
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.position.name }}</td>
                 <td>{{ employee.salary }}</td>
                 <td>{{ employee.hired_at }}</td>
                 <td>
-                    <a :href="'/employees/'+employee.id+'/edit'" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="#" @click="deleteEntry(employee.id)" class="btn btn-xs btn-danger">Delete</a>
+                    <a :href="'/employees/'+employee.id" class="btn btn-default">Profile</a>
+                    <a :href="'/employees/'+employee.id+'/edit'" class="btn btn-primary">Edit</a>
+                    <a href="#" @click="deleteEntry(employee.id)" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             </tbody>

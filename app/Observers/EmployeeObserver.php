@@ -36,13 +36,7 @@ class EmployeeObserver
     public function saving(Employee $employee)
     {
         if (request()->hasFile('photo')) {
-
-            $employee->photo = request()->file('photo')->store('public/uploads/image');
-            $employee->photo_small = 'public/uploads/small'.time().'.jpg';
-
-//            \Image::make($employee->photo)->resize(100, 100)
-//                ->save($employee->photo_small);
-
+            $employee->photo = substr(request()->file('photo')->store('/public/image'),6);
         }
     }
 

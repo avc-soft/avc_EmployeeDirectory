@@ -16,6 +16,7 @@ class EmployeesTableSeeder extends Seeder
         DB::disableQueryLog();
 
         // TODO: Исправить 55к инсертов на один и переделать забор во что-то менее постыдное
+        // TODO: Upd.: при одном инсерте отваливается по памяти, что неудивительно. Подумать что-то еще.
         factory(Employee::class)
             ->create(['position_id' => 1])
             ->each(function ($boss) {$this->createSeed($boss, 2, 5)

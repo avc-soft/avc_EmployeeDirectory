@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-md-3" align="center">
                                 <img alt="User Pic"
-                                     src="{{ asset($employee->avatar) }}"
+                                     src="{{ $employee->avatar }}"
                                      class="img-circle img-responsive">
                             </div>
 

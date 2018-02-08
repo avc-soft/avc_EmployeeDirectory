@@ -19,6 +19,8 @@ class Employee extends Model
         'hired_at'
     ];
 
+    public $no_photo_filename = 'artist-icon.png';
+
     public function position()
     {
         return $this->belongsTo(Position::class);
@@ -34,7 +36,7 @@ class Employee extends Model
      */
     public function getAvatarAttribute()
     {
-        return $this->photo ?: '/storage/artist-icon.png';
+        return '/storage/'.($this->photo ?: $this->no_photo_filename);
     }
 
     /**
@@ -42,7 +44,7 @@ class Employee extends Model
      */
     public function getThumbAttribute()
     {
-        return $this->photo_small ?: '/storage/artist-icon.png';
+        return '/storage/'.($this->photo_small ?: $this->no_photo_filename);
     }
 
     /**
