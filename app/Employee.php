@@ -34,7 +34,15 @@ class Employee extends Model
      */
     public function getAvatarAttribute()
     {
-        return $this->avatar ?: '/storage/artist-icon.png';
+        return $this->photo ?: '/storage/artist-icon.png';
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumbAttribute()
+    {
+        return $this->photo_small ?: '/storage/artist-icon.png';
     }
 
     /**

@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <ul class="pagination" v-if="shouldPaginate">
+        <ul class="pager" v-if="shouldPaginate">
             <li v-show="prevUrl">
                 <a href="#" aria-label="Previous" rel="prev" @click.prevent="page--">
                     <span aria-hidden="true">&laquo; Previous</span>

@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ url("/employees/$employee->id") }}">
+                        <form class="form-horizontal" method="POST" action="{{ url("/employees/$employee->id") }}" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @include('employees.crud._form')
                         </form>

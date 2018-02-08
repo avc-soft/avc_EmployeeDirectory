@@ -5,12 +5,13 @@
 
         <div class="input-group search-field pull-right">
             <span class="input-group-addon" id="search-addon">Search for</span>
-            <input v-model="searchQuery" @input="send" type="text" class="form-control" placeholder="something..." aria-describedby="search-addon">
+            <input v-model="searchQuery" type="text" class="form-control" placeholder="something..." aria-describedby="search-addon">
         </div>
 
         <table class="table table-hover">
             <thead>
             <tr>
+                <th></th>
                 <th @click="sortBy('name')">Name</th>
                 <th @click="sortBy('position_id')">Position</th>
                 <th @click="sortBy('salary')">Salary</th>
@@ -20,11 +21,13 @@
             </thead>
             <tbody>
             <tr v-for="employee in employees" :key="employee.id">
+                <td><img :src="employee.thumb" alt="" /></td>
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.position.name }}</td>
                 <td>{{ employee.salary }}</td>
                 <td>{{ employee.hired_at }}</td>
                 <td>
+                    <a :href="'/employees/'+employee.id" class="btn btn-xs btn-default">Profile</a>
                     <a :href="'/employees/'+employee.id+'/edit'" class="btn btn-xs btn-primary">Edit</a>
                     <a href="#" @click="deleteEntry(employee.id)" class="btn btn-xs btn-danger">Delete</a>
                 </td>
@@ -51,7 +54,9 @@
         },
         watch: {
             searchQuery() {
-                this.fetch();
+                if (this.searchQuery.length > 3){
+                    this.fetch();
+                }
             }
         },
         methods: {
@@ -78,7 +83,14 @@
             },
             deleteEntry(id) {
                 if (confirm("Do you really want to delete it?")) {
-                    axios.delete(`/employees/${id}`).then(this.fetch);
+                    axios.delete(`/employees/${id}`)
+                        .then(
+                            // reload because of flash message, need to fix that
+                            //this.fetch
+                            function () {
+                                location.reload();
+                            }
+                        );
                 }
             }
         }

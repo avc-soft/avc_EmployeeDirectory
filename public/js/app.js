@@ -43510,6 +43510,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43628,6 +43631,8 @@ var render = function() {
       _c("table", { staticClass: "table table-hover" }, [
         _c("thead", [
           _c("tr", [
+            _c("th"),
+            _vm._v(" "),
             _c(
               "th",
               {
@@ -43684,6 +43689,10 @@ var render = function() {
           "tbody",
           _vm._l(_vm.employees, function(employee) {
             return _c("tr", { key: employee.id }, [
+              _c("td", [
+                _c("img", { attrs: { src: employee.thumb, alt: "" } })
+              ]),
+              _vm._v(" "),
               _c("td", [_vm._v(_vm._s(employee.name))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(employee.position.name))]),
@@ -43693,6 +43702,15 @@ var render = function() {
               _c("td", [_vm._v(_vm._s(employee.hired_at))]),
               _vm._v(" "),
               _c("td", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-xs btn-default",
+                    attrs: { href: "/employees/" + employee.id }
+                  },
+                  [_vm._v("Profile")]
+                ),
+                _vm._v(" "),
                 _c(
                   "a",
                   {
@@ -43859,7 +43877,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "text-center" }, [
     _vm.shouldPaginate
-      ? _c("ul", { staticClass: "pagination" }, [
+      ? _c("ul", { staticClass: "pager" }, [
           _c(
             "li",
             {

@@ -1,5 +1,13 @@
 {{ csrf_field() }}
 
+<div class="form-group">
+    <label for="photo" class="col-md-4 control-label">Photo</label>
+    <div class="col-md-6">
+        <input type="file" name="photo" id="photo">
+        <p class="help-block">Upload the image.</p>
+    </div>
+</div>
+
 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <label for="name" class="col-md-4 control-label">Name</label>
 
