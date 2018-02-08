@@ -29,7 +29,54 @@ class EmployeeTest extends TestCase
 
         $midBoss2->delete();
 
+        $this->assertDatabaseMissing('employees', $midBoss2->toArray());
+
         $this->assertEquals(2, $midBoss1->children()->count());
         $this->assertEquals(3, $topBoss->children()->count());
+    }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testCreateAnEmployee()
+    {
+        $this->signIn();
+
+        $employee = [
+            'name' => 'John Smith',
+            'position_id' => 1,
+            'salary' => 0,
+            'boss_id' => 0
+        ];
+
+        $this->post('/employees', $employee);
+
+        $this->assertDatabaseHas('employees', $employee);
+    }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testUpdateAnEmployee()
+    {
+        $this->signIn();
+
+        $employee = create(Employee::class);
+
+        $newData = [
+            'name' => 'John Smith',
+            'position_id' => 1,
+            'salary' => 0,
+            'boss_id' => 0
+        ];
+
+        $this->patch("/employees/$employee->id", $newData);
+
+        $this->assertDatabaseMissing('employees', $employee->toArray());
+        $this->assertDatabaseHas('employees', $newData);
     }
 }
